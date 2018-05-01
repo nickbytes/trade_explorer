@@ -1,0 +1,47 @@
+{
+  "name": "trade_explorer",
+  "version": "1.0.0",
+  "description": "View your crypto trades",
+  "main": "index.js",
+  "scripts": {
+    "migrate": "knex migrate:latest",
+    "rollback": "knex migrate:rollback",
+    "migration": "./scripts/migrations.sh",
+    "build": "babel src -d build",
+    "start": "npm run build && npm run migrate && node build/app"
+  },
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "node": "current"
+          }
+        }
+      ],
+      "stage-1"
+    ]
+  },
+  "author": "nickbytes",
+  "license": "MIT",
+  "dependencies": {
+    "ansicolor": "^1.1.71",
+    "as-table": "^1.0.31",
+    "body-parser": "^1.18.2",
+    "ccxt": "^1.13.50",
+    "express": "^4.16.3",
+    "express-promise-router": "^3.0.2",
+    "knex": "^0.14.6",
+    "lodash": "^4.17.10",
+    "morgan": "^1.9.0",
+    "objection": "^1.1.7",
+    "ololog": "^1.1.87",
+    "pg": "^7.4.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-1": "^6.24.1"
+  }
+}
