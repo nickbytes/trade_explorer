@@ -15,18 +15,11 @@ class App extends Component {
   }
 
   fetchTrades = (page = 0) => {
-    // Normal people don't think about things as zero-indexed lol.
-    // We will allow 0 and 1 to be the same thing.
-    // Not going to account for negative numbers.
-    // We would use react-router and real pages + 404
-    // if this was a real site.
-    let pageSetter;
-    if (page === 0) {
-      pageSetter = 0;
-    } else {
-      pageSetter = page - 1;
-    }
-    fetch(`/api/v1/trades?page=${pageSetter}`)
+    // defaulting to zero
+    // on a real site we could use some mix of
+    // react-router and pages to reuse this function
+    // and get different pages
+    fetch(`/api/v1/trades?page=${page}`)
       .then(response => {
         if (response.status >= 400) {
           throw new Error("Bad response from server");
