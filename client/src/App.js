@@ -26,7 +26,7 @@ class App extends Component {
     } else {
       pageSetter = page - 1;
     }
-    fetch(`/api/v1/trades/${pageSetter}`)
+    fetch(`/api/v1/trades?page=${pageSetter}`)
       .then(response => {
         if (response.status >= 400) {
           throw new Error("Bad response from server");

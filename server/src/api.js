@@ -14,8 +14,8 @@ const exchange = new ccxt.gdax({
 exchange.urls["api"] = exchange.urls["test"];
 
 export default router => {
-  router.get("/api/v1/trades/:id", async (req, res) => {
-    const pageNum = await parseInt(req.params.id, 10);
+  router.get("/api/v1/trades", async (req, res) => {
+    const pageNum = await parseInt(req.query.page || 0, 10);
 
     // use page num query and trades
     const trades = await Trades.query()
